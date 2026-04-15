@@ -15,3 +15,9 @@ def send_notification(payload: str):
     data = json.loads(payload)
     print(f"sending notification to {data['email']}")
     time.sleep(1)
+
+job_registry = {
+    "run_submission": run_submission,
+    "send_notification": send_notification,
+    "generate_report": generate_report
+}
