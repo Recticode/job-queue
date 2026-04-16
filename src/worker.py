@@ -14,7 +14,7 @@ class Worker:
 
         if not job:
             print("no jobs available")
-            return
+            return None
 
         self.queue.mark_running(job)
 
@@ -26,16 +26,18 @@ class Worker:
             if not handler:
                 print("unknown job type:", job.type)
                 self.queue.handle_failure(job)
-                return
+                return False
 
             handler(job.payload)
 
             self.queue.mark_done(job)
             print(job.id, "done")
+            return True
 
         except Exception as e:
             print("job failed:", e)
             self.queue.handle_failure(job)
+            return False
 
     def run_forever(self):
         while True:
