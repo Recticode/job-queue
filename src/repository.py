@@ -79,10 +79,8 @@ class Database:
         try:
             conn = sqlite3.connect(self.file_name)
 
-            conn.execute("UPDATE jobs SET status = ? AND updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+            conn.execute("UPDATE jobs SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
                          (status, job_id))
-
-
 
             conn.commit()
         except Exception as e:
