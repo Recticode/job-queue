@@ -1,6 +1,6 @@
 import typer
 from worker import Worker
-from queue import Queue
+from job_queue import Queue
 from jobs import job_registry
 from failure_policy import FailurePolicy
 

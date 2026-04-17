@@ -31,7 +31,6 @@ class Worker:
             handler(job.payload)
 
             self.queue.mark_done(job)
-            print(job.id, "done")
             return True
 
         except Exception as e:
@@ -61,7 +60,6 @@ class Worker:
                     continue
 
                 handler(job.payload)
-
                 self.queue.mark_done(job)
 
             except Exception as e:
